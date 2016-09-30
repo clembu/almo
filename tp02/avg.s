@@ -6,9 +6,9 @@
   main:
 
   #prologue
-  addiu $29, $29, -8
+  addiu $29, $29, -12
   sw $31, 0($29)
-  addiu $29, $29, -4 #arguments arimean
+
 
   #body
   la $4, tab
@@ -19,20 +19,18 @@
   ori $2, $0 ,0
 
   #epilogue
-  addiu $29, $29, 4
   lw $31, 0($29)
-  addiu $29, $29, 8
+  addiu $29, $29, 12
   jr $31
 
 
   arimean:
   #prologue
-  addiu $29, $29, -16
+  addiu $29, $29, -20
   sw $31, 0($29)
   sw $16, 4($29) #t[]
   sw $17, 8($29) #n
   sw $18, 12($29) #x
-  addiu $29, $29, -4
   or $16, $0, $4
 
   #body
@@ -47,12 +45,11 @@
   div $18, $17
   mflo $2
   #epilogue
-  addiu $29, $29, 4
   lw $31, 0($29)
   lw $16, 4($29)
   lw $17, 8($29)
   lw $18, 12($29)
-  addiu $29, $29, 16
+  addiu $29, $29, 20
   jr $31
 
   sizetab:

@@ -2,11 +2,10 @@
 .globl main
   fact:
   #prologue
-  addiu $29, $29, -12
+  addiu $29, $29, -16
   sw $31, 0($29)
   sw $16, 4($29)
   or $16, $0, $4
-  addiu $29, $29, -4
 
   #body
   bgtz $16, elseFact #if n >= 0
@@ -22,20 +21,18 @@
   endifFact:
 
   #epilogue
-  addiu $29, $29, 4
   lw $31, 0($29)
   lw $16, 4($29)
-  addiu $29, $29, 12
+  addiu $29, $29, 16
   jr $31
 ##########################
   main:
   #prologue
-  addiu $29, $29, -4
+  addiu $29, $29, -8
   sw $31, 0($29)
-  addiu $29, $29, -4
 
   #body
-  ori $4, $0, 10
+  ori $4, $0, 5
   jal fact
   or $4, $0, $2
   ori $2, $0, 1
@@ -43,7 +40,6 @@
   ori $2, $0, 0
 
   #epilogue
-  addiu $29, $29, 4
   lw $31, 0($29)
-  addiu $29, $29, 4
+  addiu $29, $29, 8
   jr $31
